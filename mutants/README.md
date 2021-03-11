@@ -19,7 +19,7 @@ To compile this project we need:
 
 After the above, go to the mutants folder and compile the code with `mvnw clean install -P dev` and runs with `mvnw spring-boot:run -P dev`.
 
-To create the docker image you can execute the command `mvnw clean package dockerfile:push`
+To create the docker image you can execute the command `mvnw clean package`
 
 ### Testing in Local Environment
 To test the application in a local environment, you can access to this URL: [link](http://localhost:8090/swagger-ui.html) and try the service
