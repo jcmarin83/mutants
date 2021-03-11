@@ -25,7 +25,7 @@ To create the docker image you can execute the command `mvnw clean package`
 To test the application in a local environment, you can access to this URL: [link](http://localhost:8090/swagger-ui.html) and try the service
 
 ### Using Application in Production Environment
-In order to use the application in production environment, you must access to the URL: [link](http://https://ec2-3-139-74-212.us-east-2.compute.amazonaws.com/swagger-ui.html)
+In order to use the application in production environment, you must access to the URL: [link](http://ec2-3-138-154-248.us-east-2.compute.amazonaws.com/swagger-ui.html)
 
 ### Mutant Service 
 in Swagger select the service Mutant, push the `Try Out` Button, in the request put the DNA sequence (e.g. "ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG") between the square brackets 
