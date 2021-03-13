@@ -73,8 +73,8 @@ class MutantsServiceTest {
 	
 	@Test
 	void testIsMutantAlreadyValidated() {
+		when(personsRepository.findByDna(anyString())).thenReturn(Optional.of(new Person()));
 		assertThrows(MutantAlreadyEvaluatedException.class, () -> {
-			when(personsRepository.findByDna(anyString())).thenReturn(Optional.of(new Person()));
 			mutantsService.isMutant(DNA_MUTANT_BY_ROW);
 		});
 	}
@@ -87,8 +87,8 @@ class MutantsServiceTest {
 	
 	@Test
 	void testGetStats() {
-		when(personsRepository.countMutant()).thenReturn(40);
-		when(personsRepository.countHuman()).thenReturn(100);
+		when(personsRepository.countByMutant(true)).thenReturn(40);
+		when(personsRepository.countByMutant(false)).thenReturn(100);
 		StatsResponse response = mutantsService.getMutantsStats();
 		
 		assertNotNull(response);
@@ -99,8 +99,8 @@ class MutantsServiceTest {
 	
 	@Test
 	void testGetStatsNoHumans() {
-		when(personsRepository.countMutant()).thenReturn(40);
-		when(personsRepository.countHuman()).thenReturn(0);
+		when(personsRepository.countByMutant(true)).thenReturn(40);
+		when(personsRepository.countByMutant(false)).thenReturn(0);
 		StatsResponse response = mutantsService.getMutantsStats();
 		
 		assertNotNull(response);

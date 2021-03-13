@@ -67,8 +67,8 @@ public class MutantsService {
 	}
 
 	public StatsResponse getMutantsStats() {
-		Integer countMutants = personsRepository.countMutant();
-		Integer countHumans = personsRepository.countHuman();
+		Integer countMutants = personsRepository.countByMutant(true);
+		Integer countHumans = personsRepository.countByMutant(false);
 		Double ratio = 0d;
 		if (!ZERO.equals(countHumans)) {
 			ratio = countMutants.doubleValue() / countHumans.doubleValue();
@@ -79,6 +79,7 @@ public class MutantsService {
 
 	/**
 	 * Save a person and the mutant evaluation in the DB
+	 * 
 	 * @param dna
 	 * @param result
 	 */
@@ -89,7 +90,7 @@ public class MutantsService {
 		if (personsRepository.findByDna(dnaToStore).isPresent()) {
 			throw new MutantAlreadyEvaluatedException();
 		}
-		
+
 		personsRepository.save(person);
 	}
 
